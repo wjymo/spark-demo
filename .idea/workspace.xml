@@ -1,150 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fc028339-ffb0-47d2-8e2a-156698c6742b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/hydra.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/spark-demo.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/conf/ConfigurationManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/core/SimpleApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/core/TestOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/core/WordCount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/pk/batch/ImoocLogApp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/sql/log/ParquetDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/sql/log/SparkFormatJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/sql/log/SparkStatCleanJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/sql/log/TopNStatJob.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/sql/log/entity/DayVideoAccessStat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/stream/AsyncCommit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/stream/OffsetOfRedis.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/stream/TransformBlacklist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/stream/UpdateStateByKeyWordCount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/stream/WordCount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/stream/kafka/KafkaConsumerDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/stream/kafka/KafkaProducerDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/stream/kafka/KafkaProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/stream/kafka/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/stream/kafka/NewKafkaConsumer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/sxt1903/MockData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/sxt1903/MonitorFlowAnalyze.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/sxt1903/SelfDefineAccumulator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/sxt1903/dao/SXTTaskDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/sxt1903/dto/MonitorDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/sxt1903/entity/SXTTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/util/AccessConvertUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/util/DateUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/util/FTPUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/util/IpUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/util/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/util/MySQLUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/util/RedisUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/util/StatDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/util/TestFtp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/project/constant/Constants.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/project/dao/SessionAggrStatDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/project/dao/TaskDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/project/entity/SessionAggrStat.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/project/entity/Task.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/project/session/SessionAggrStatAccumulator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/project/session/SessionAggrStatAccumulator2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/project/session/UserVisitSessionAnalyzeSpark.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/project/test/MockData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/project/utils/DAOTools.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/project/utils/DateUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/project/utils/MyStringUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/project/utils/NumberUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/project/utils/ParamUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/project/utils/ValidUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/sql/DailyTop3Keyword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/sql/DailyUV.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/sql/JDBCDataSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/sql/JSONDataSource.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/sql/StringCount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zh13/sql/UDFTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/wjy/zhenaiETL/ZhenaiETLDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ipDatabase.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ipRegion.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/my.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/mybatis-config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/conf/ConfigurationManager.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/core/SimpleApp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/core/TestOperator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/core/WordCount.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/pk/batch/ImoocLogApp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/sql/log/ParquetDemo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/sql/log/SparkFormatJob.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/sql/log/SparkStatCleanJob.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/sql/log/TopNStatJob.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/sql/log/entity/DayVideoAccessStat.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/stream/AsyncCommit.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/stream/OffsetOfRedis.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/stream/TransformBlacklist$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/stream/TransformBlacklist.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/stream/UpdateStateByKeyWordCount.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/stream/WordCount.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/stream/kafka/KafkaConsumerDemo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/stream/kafka/KafkaProducerDemo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/stream/kafka/KafkaProperties.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/stream/kafka/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/stream/kafka/NewKafkaConsumer.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/sxt1903/MockData.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/sxt1903/MonitorFlowAnalyze.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/sxt1903/SelfDefineAccumulator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/sxt1903/dao/SXTTaskDAO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/sxt1903/dto/MonitorDetail$MonitorDetailBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/sxt1903/dto/MonitorDetail.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/sxt1903/entity/SXTTask$SXTTaskBuilder.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/sxt1903/entity/SXTTask.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/util/AccessConvertUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/util/DateUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/util/FTPUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/util/IpUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/util/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/util/MySQLUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/util/RedisUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/util/StatDAO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/util/TestFtp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/project/constant/Constants.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/project/dao/SessionAggrStatDAO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/project/dao/TaskDAO.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/project/entity/SessionAggrStat.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/project/entity/Task.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/project/session/SessionAggrStatAccumulator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/project/session/SessionAggrStatAccumulator2.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/project/session/UserVisitSessionAnalyzeSpark$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/project/session/UserVisitSessionAnalyzeSpark.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/project/test/MockData.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/project/utils/DAOTools.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/project/utils/DateUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/project/utils/MyStringUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/project/utils/NumberUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/project/utils/ParamUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/project/utils/ValidUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/sql/DailyTop3Keyword.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/sql/DailyUV.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/sql/JDBCDataSource.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/sql/JSONDataSource.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/sql/StringCount.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zh13/sql/UDFTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/wjy/zhenaiETL/ZhenaiETLDemo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/ipDatabase.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/ipRegion.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/my.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mybatis-config.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/spark-demo-1.0-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/spark-demo-1.0-SNAPSHOT.jar" afterDir="false" />
+    <list default="true" id="fc028339-ffb0-47d2-8e2a-156698c6742b" name="Default Changelist" comment="first">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -176,16 +34,17 @@
           <entry key="java" value="13153" />
           <entry key="properties" value="43" />
           <entry key="scala" value="59" />
-          <entry key="xml" value="97" />
+          <entry key="txt" value="5" />
+          <entry key="xml" value="98" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="13153" />
-          <entry key="PLAIN_TEXT" value="24" />
+          <entry key="PLAIN_TEXT" value="29" />
           <entry key="Properties" value="43" />
           <entry key="Scala" value="59" />
-          <entry key="XML" value="97" />
+          <entry key="XML" value="98" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -193,6 +52,7 @@
           <entry key="0-SNAPSHOT" value="1" />
           <entry key="class" value="50" />
           <entry key="csv" value="1" />
+          <entry key="gitignore" value="1" />
           <entry key="java" value="209" />
           <entry key="pom" value="2" />
           <entry key="properties" value="6" />
@@ -204,7 +64,7 @@
         <counts>
           <entry key="CLASS" value="50" />
           <entry key="JAVA" value="209" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="PLAIN_TEXT" value="2" />
           <entry key="Properties" value="6" />
           <entry key="Scala" value="61" />
           <entry key="UML" value="1" />
@@ -242,11 +102,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="754">
-              <caret line="35" column="12" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="35" selection-end-column="12" />
+            <state relative-caret-position="130">
+              <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
             </state>
           </provider>
           <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -352,9 +217,9 @@
         <option value="$PROJECT_DIR$/src/main/java/com/wjy/stream/WordCount.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wjy/sql/log/ParquetDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wjy/util/RedisUtil.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/wjy/stream/OffsetOfRedis.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/wjy/stream/AsyncCommit.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -897,60 +762,7 @@
               <item name="spark-demo" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spark-demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="spark-demo" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="wjy" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spark-demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="spark-demo" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="wjy" type="462c0819:PsiDirectoryNode" />
-              <item name="log" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spark-demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="spark-demo" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="wjy" type="462c0819:PsiDirectoryNode" />
-              <item name="stream" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spark-demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="spark-demo" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="wjy" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spark-demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="spark-demo" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spark-demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="spark-demo" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spark-demo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="spark-demo" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -982,6 +794,7 @@
       <recent name="com.wjy.zh13.project.utils" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\workspace\spark-demo" />
       <recent name="F:\workspace\spark-demo\src\main\java\com\wjy\streaning\kafka" />
       <recent name="F:\workspace\spark-demo\src\main\java\com\wjy\zh13\sql" />
       <recent name="F:\workspace\spark-demo\src\main\resources" />
@@ -1118,15 +931,24 @@
       <workItem from="1569748485783" duration="8147000" />
       <workItem from="1570498726752" duration="23021000" />
       <workItem from="1570685720578" duration="126000" />
-      <workItem from="1570687269476" duration="618000" />
+      <workItem from="1570687269476" duration="2170000" />
     </task>
+    <task id="LOCAL-00001" summary="first">
+      <created>1570690420424</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1570690420424</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180874000" />
+    <option name="totallyTimeSpent" value="182426000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77795273" visible="true" weight="0.18550107" />
       <window_info id="Structure" order="1" sideWeight="0.22204724" side_tool="true" weight="0.26385927" />
@@ -1199,6 +1021,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first" />
+    <option name="LAST_COMMIT_MESSAGE" value="first" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1299,13 +1125,6 @@ String[] fields = &quot;sessionid=1d905c366e9b486db0140cdbbfb9c086|searchKeyword
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/wjy/sxt1903/MonitorFlowAnalyze.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="168" column="25" selection-start-line="168" selection-start-column="25" selection-end-line="168" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/wjy/core/WordCount.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
@@ -4813,11 +4632,14 @@ String[] fields = &quot;sessionid=1d905c366e9b486db0140cdbbfb9c086|searchKeyword
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="754">
-          <caret line="35" column="12" lean-forward="true" selection-start-line="9" selection-start-column="4" selection-end-line="35" selection-end-column="12" />
+        <state relative-caret-position="130">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
         </state>
       </provider>
     </entry>
