@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.wjy.conf.ConfigurationManager;
 import com.wjy.core.WordCount;
 import com.wjy.sxt1903.dao.SXTTaskDAO;
+import com.wjy.sxt1903.entity.MonitorState;
 import com.wjy.sxt1903.entity.SXTTask;
 import com.wjy.zh13.project.constant.Constants;
 import com.wjy.zh13.project.utils.DAOTools;
@@ -41,7 +42,7 @@ public class MonitorFlowAnalyze {
             sparkContext= sparkSession.sparkContext();
             JavaSparkContext javaSparkContext = new JavaSparkContext(sparkContext);
 
-//            MockData.mock(javaSparkContext, sparkSession);
+            MockData.mock(javaSparkContext, sparkSession);
         }else {
 
         }
@@ -67,9 +68,15 @@ public class MonitorFlowAnalyze {
         SelfDefineAccumulator selfDefineAccumulator=new SelfDefineAccumulator();
         sparkContext.register(selfDefineAccumulator,"selfDefineAccumulator");
 
+        JavaPairRDD<Integer, String> carCount2monitorIdRDD = checkMonitorState(sparkSession, monitorId2CameraCountRDD, selfDefineAccumulator);
+        //触发job，更新累加器
+        long count = carCount2monitorIdRDD.count();
+        saveAccumulator(taskId,selfDefineAccumulator);
 
         sparkSession.stop();
     }
+
+
 
     private static JavaRDD<Row> getCameraRDDByDateRange(SparkSession sparkSession, JSONObject taskParamsJsonObject){
         String startDate = ParamUtils.getParam(taskParamsJsonObject, Constants.PARAM_START_DATE);
@@ -107,7 +114,7 @@ public class MonitorFlowAnalyze {
 
     }
 
-    private static void checkMonitorState(SparkSession sparkSession,JavaPairRDD<String, String> monitorId2CameraCountRDD
+    private static JavaPairRDD<Integer, String> checkMonitorState(SparkSession sparkSession,JavaPairRDD<String, String> monitorId2CameraCountRDD
     ,SelfDefineAccumulator selfDefineAccumulator){
         String sql="SELECT * FROM monitor_camera_info";
         Dataset<Row> dataset = sparkSession.sql(sql);
@@ -135,69 +142,84 @@ public class MonitorFlowAnalyze {
                 });
         JavaPairRDD<String, Tuple2<String, Optional<String>>> joinResultRDD =
                 standardMonitor2CameraInfos.leftOuterJoin(monitorId2CameraCountRDD);
-        joinResultRDD.mapPartitionsToPair(iterator -> {
+        JavaPairRDD<Integer, String> carCount2monitorIdRDD = joinResultRDD.mapPartitionsToPair(iterator -> {
             List<Tuple2<Integer, String>> list = new ArrayList<>();
-            while (iterator.hasNext()){
+            while (iterator.hasNext()) {
                 Tuple2<String, Tuple2<String, Optional<String>>> next = iterator.next();
                 String monitorId = next._1;
                 Tuple2<String, Optional<String>> stringOptionalTuple2 = next._2;
                 String standardCameraInfos = stringOptionalTuple2._1;
                 Optional<String> factCameraInfosOptional = stringOptionalTuple2._2;
-                String factCameraInfos =null;
-                if(factCameraInfosOptional.isPresent()){
-                     factCameraInfos=factCameraInfosOptional.get();
+                String factCameraInfos = null;
+                if (factCameraInfosOptional.isPresent()) {
+                    factCameraInfos = factCameraInfosOptional.get();
                     int factCameraCount = Integer.parseInt(MyStringUtils.getFieldFromConcatString(factCameraInfos,
                             "\\|", Constants.FIELD_CAMERA_COUNT));
                     int standardCameraCount = Integer.parseInt(MyStringUtils.getFieldFromConcatString(standardCameraInfos,
                             "\\|", Constants.FIELD_CAMERA_COUNT));
-                    if(factCameraCount==standardCameraCount){
+                    if (factCameraCount == standardCameraCount) {
                         //都是正常的
-                        selfDefineAccumulator.add(Constants.FIELD_NORMAL_MONITOR_COUNT+"=1|"
-                            +Constants.FIELD_NORMAL_CAMERA_COUNT+"="+standardCameraCount+"|");
-                    }else {
+                        selfDefineAccumulator.add(Constants.FIELD_NORMAL_MONITOR_COUNT + "=1|"
+                                + Constants.FIELD_NORMAL_CAMERA_COUNT + "=" + standardCameraCount + "|");
+                    } else {
                         String factCameraIds = MyStringUtils.getFieldFromConcatString(factCameraInfos, "\\|", Constants.FIELD_CAMERA_IDS);
                         String standardCameraIds = MyStringUtils.getFieldFromConcatString(standardCameraInfos, "\\|", Constants.FIELD_CAMERA_IDS);
                         List<String> factCameraIdList = Arrays.asList(factCameraIds.split(","));
                         String[] standardCameraIdsSplit = standardCameraIds.split(",");
-                        Integer abnormalCameraCount=0;
-                        StringBuilder abNormalCameraStringBuilder=new StringBuilder();
+                        Integer abnormalCameraCount = 0;
+                        StringBuilder abNormalCameraStringBuilder = new StringBuilder();
                         for (String cameraId : standardCameraIdsSplit) {
-                            if(!factCameraIdList.contains(cameraId)){
+                            if (!factCameraIdList.contains(cameraId)) {
                                 abnormalCameraCount++;
-                                abNormalCameraStringBuilder.append(","+cameraId);
+                                abNormalCameraStringBuilder.append("," + cameraId);
                             }
                         }
                         int normalCameraCount = standardCameraIdsSplit.length - abnormalCameraCount;
                         selfDefineAccumulator.add(
-                                Constants.FIELD_ABNORMAL_MONITOR_COUNT+"=1|"+
-                                Constants.FIELD_NORMAL_CAMERA_COUNT+"="+normalCameraCount+"|"+
-                                Constants.FIELD_ABNORMAL_CAMERA_COUNT+"="+abnormalCameraCount+"|"+
-                                Constants.FIELD_ABNORMAL_MONITOR_CAMERA_INFOS+"="
-                                        +"="+monitorId + ":" +abNormalCameraStringBuilder.toString().substring(1)
+                                Constants.FIELD_ABNORMAL_MONITOR_COUNT + "=1|" +
+                                        Constants.FIELD_NORMAL_CAMERA_COUNT + "=" + normalCameraCount + "|" +
+                                        Constants.FIELD_ABNORMAL_CAMERA_COUNT + "=" + abnormalCameraCount + "|" +
+                                        Constants.FIELD_ABNORMAL_MONITOR_CAMERA_INFOS + "="
+                                        + "=" + monitorId + ":" + abNormalCameraStringBuilder.toString().substring(1)
                         );
                     }
-                }else {
+                } else {
                     //optional不存在，说明此卡口下的所有摄像头都坏了
                     String standardCameraIds = MyStringUtils
                             .getFieldFromConcatString(standardCameraInfos, "\\|", Constants.FIELD_CAMERA_IDS);
                     String[] split = standardCameraIds.split(",");
                     int length = split.length;
                     //abnormalMonitorCount=1|abnormalCameraCount=3|abnormalMonitorCameraInfos="0002":07553,07554,07556
-                    selfDefineAccumulator.add(Constants.FIELD_ABNORMAL_MONITOR_COUNT +"=1|"
-										+Constants.FIELD_ABNORMAL_CAMERA_COUNT+"="+length+"|"
-										+Constants.FIELD_ABNORMAL_MONITOR_CAMERA_INFOS+"="+monitorId+":"+standardCameraIds);
+                    selfDefineAccumulator.add(Constants.FIELD_ABNORMAL_MONITOR_COUNT + "=1|"
+                            + Constants.FIELD_ABNORMAL_CAMERA_COUNT + "=" + length + "|"
+                            + Constants.FIELD_ABNORMAL_MONITOR_CAMERA_INFOS + "=" + monitorId + ":" + standardCameraIds);
                 }
                 if (factCameraInfos != null) {
                     //从实际数据拼接到字符串中获取车流量
                     int carCount = Integer.parseInt(MyStringUtils.getFieldFromConcatString(factCameraInfos,
                             "\\|", Constants.FIELD_CAR_COUNT));
-                    list.add(new Tuple2<>(carCount,monitorId));
+                    list.add(new Tuple2<>(carCount, monitorId));
                 }
             }
             return list.iterator();
         });
+        return carCount2monitorIdRDD;
     }
 
+
+    private static void saveAccumulator(Long taskId, SelfDefineAccumulator selfDefineAccumulator) {
+        String value = selfDefineAccumulator.value();
+        String normalMonitorCount = MyStringUtils.getFieldFromConcatString(value, "\\|", Constants.FIELD_NORMAL_MONITOR_COUNT);
+        String normalCameraCount = MyStringUtils.getFieldFromConcatString(value, "\\|", Constants.FIELD_NORMAL_CAMERA_COUNT);
+        String abnormalMonitorCount = MyStringUtils.getFieldFromConcatString(value, "\\|", Constants.FIELD_ABNORMAL_MONITOR_COUNT);
+        String abnormalCameraCount = MyStringUtils.getFieldFromConcatString(value, "\\|", Constants.FIELD_ABNORMAL_CAMERA_COUNT);
+        String abnormalMonitorCameraInfos = MyStringUtils.getFieldFromConcatString(value, "\\|", Constants.FIELD_ABNORMAL_MONITOR_CAMERA_INFOS);
+
+        MonitorState monitorState = MonitorState.builder().abnormalCameraCount(abnormalCameraCount).abnormalMonitorCount(abnormalMonitorCount)
+                .normalCameraCount(normalCameraCount).normalMonitorCount(normalMonitorCount)
+                .abnormalMonitorCameraInfos(abnormalMonitorCameraInfos).taskId(taskId).build();
+
+    }
 
 
 
