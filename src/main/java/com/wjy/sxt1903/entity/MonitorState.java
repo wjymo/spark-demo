@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * 卡口状态
  * @author root
@@ -14,8 +16,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class MonitorState {
-	
+public class MonitorState implements Serializable {
+
+	private static final long serialVersionUID = -4358287481351951115L;
 	private long taskId;
 	private String normalMonitorCount;//正常的卡扣个数
 	private String normalCameraCount;//正常的摄像头个数

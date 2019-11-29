@@ -4,9 +4,11 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.wjy.conf.ConfigurationManager;
 import com.wjy.core.WordCount;
+import com.wjy.sxt1903.dao.MonitorStateDAO;
 import com.wjy.sxt1903.dao.SXTTaskDAO;
 import com.wjy.sxt1903.entity.MonitorState;
 import com.wjy.sxt1903.entity.SXTTask;
+import com.wjy.sxt1903.entity.TopNMonitor2CarCount;
 import com.wjy.zh13.project.constant.Constants;
 import com.wjy.zh13.project.utils.DAOTools;
 import com.wjy.zh13.project.utils.MyStringUtils;
@@ -33,6 +35,7 @@ public class MonitorFlowAnalyze {
         SparkSession.Builder builder = SparkSession.builder().appName("ParquetDemo");
         SparkContext sparkContext=null;
         SparkSession sparkSession=null;
+        JavaSparkContext javaSparkContext =null;
 
         Boolean onLocal = ConfigurationManager.getBoolean(Constants.SPARK_LOCAL);
         if(onLocal){
@@ -40,7 +43,7 @@ public class MonitorFlowAnalyze {
             builder.config("spark.driver.host","localhost");
              sparkSession= builder.getOrCreate();
             sparkContext= sparkSession.sparkContext();
-            JavaSparkContext javaSparkContext = new JavaSparkContext(sparkContext);
+             javaSparkContext=new JavaSparkContext(sparkContext);
 
             MockData.mock(javaSparkContext, sparkSession);
         }else {
@@ -71,7 +74,20 @@ public class MonitorFlowAnalyze {
         JavaPairRDD<Integer, String> carCount2monitorIdRDD = checkMonitorState(sparkSession, monitorId2CameraCountRDD, selfDefineAccumulator);
         //触发job，更新累加器
         long count = carCount2monitorIdRDD.count();
+        /**
+         * 往数据库表  monitor_state 中保存 累加器累加的五个状态
+         */
         saveAccumulator(taskId,selfDefineAccumulator);
+        Integer topNum =Integer.parseInt(ParamUtils.getParam(taskParamsJsonObject, Constants.PARAM_TOPNUM));
+        List<Tuple2<Integer, String>> take = carCount2monitorIdRDD.sortByKey(false).take(topNum);
+        List<Tuple2<String, String>> monitorId2CarCounts = new ArrayList<>();
+        take.forEach(tuple2->{
+            TopNMonitor2CarCount topNMonitor2CarCount = TopNMonitor2CarCount.builder()
+                    .carCount(tuple2._1).monitorId(tuple2._2).taskId(taskId).build();
+            monitorId2CarCounts.add(new Tuple2<String, String>(tuple2._2, tuple2._2));
+        });
+        JavaPairRDD<String, String> monitorId2MonitorIdRDD = javaSparkContext.parallelizePairs(monitorId2CarCounts);
+
 
         sparkSession.stop();
     }
@@ -82,7 +98,8 @@ public class MonitorFlowAnalyze {
         String startDate = ParamUtils.getParam(taskParamsJsonObject, Constants.PARAM_START_DATE);
         String endDate = ParamUtils.getParam(taskParamsJsonObject, Constants.PARAM_END_DATE);
 
-        String sql="select * from monitor_flow_action where date between ('"+startDate+"','"+endDate+"')";
+//        String sql="select * from monitor_flow_action where date between ('"+startDate+"','"+endDate+"')";
+        String sql="select * from monitor_flow_action";
         Dataset<Row> dataset = sparkSession.sql(sql);
         return dataset.javaRDD();
     }
@@ -180,7 +197,7 @@ public class MonitorFlowAnalyze {
                                         Constants.FIELD_NORMAL_CAMERA_COUNT + "=" + normalCameraCount + "|" +
                                         Constants.FIELD_ABNORMAL_CAMERA_COUNT + "=" + abnormalCameraCount + "|" +
                                         Constants.FIELD_ABNORMAL_MONITOR_CAMERA_INFOS + "="
-                                        + "=" + monitorId + ":" + abNormalCameraStringBuilder.toString().substring(1)
+                                         + monitorId + ":" + abNormalCameraStringBuilder.toString().substring(1)
                         );
                     }
                 } else {
@@ -218,7 +235,11 @@ public class MonitorFlowAnalyze {
         MonitorState monitorState = MonitorState.builder().abnormalCameraCount(abnormalCameraCount).abnormalMonitorCount(abnormalMonitorCount)
                 .normalCameraCount(normalCameraCount).normalMonitorCount(normalMonitorCount)
                 .abnormalMonitorCameraInfos(abnormalMonitorCameraInfos).taskId(taskId).build();
-
+        SqlSession session = DAOTools.getSession();
+        MonitorStateDAO monitorStateDAO = session.getMapper(MonitorStateDAO.class);
+        monitorStateDAO.insert(monitorState);
+        session.commit();
+        session.close();
     }
 
 

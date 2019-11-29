@@ -8,7 +8,11 @@ import org.apache.spark.util.AccumulatorV2;
 
 public class SelfDefineAccumulator extends AccumulatorV2<String, String> {
 
-    String returnResult = "";
+    String returnResult = Constants.FIELD_NORMAL_MONITOR_COUNT+"=0|"
+            + Constants.FIELD_NORMAL_CAMERA_COUNT+"=0|"
+            + Constants.FIELD_ABNORMAL_MONITOR_COUNT+"=0|"
+            + Constants.FIELD_ABNORMAL_CAMERA_COUNT+"=0|"
+            + Constants.FIELD_ABNORMAL_MONITOR_CAMERA_INFOS+"= ";
     @Override
     public boolean isZero() {
         //normalMonitorCount=0|normalCameraCount=0|abnormalMonitorCount=0|abnormalCameraCount=0|abnormalMonitorCameraInfos=
@@ -62,7 +66,12 @@ public class SelfDefineAccumulator extends AccumulatorV2<String, String> {
             if(oldValue != null){
                 //只有这个字段是string，所以单独拿出来
                 if(StringUtils.equals(Constants.FIELD_ABNORMAL_MONITOR_CAMERA_INFOS,field)){
-                    v1 = MyStringUtils.setFieldInConcatString(v1, "\\|", field, oldValue + "~" + value);
+                    if(StringUtils.isBlank(oldValue)){
+                        v1 = MyStringUtils.setFieldInConcatString(v1, "\\|", field, value);
+                    }else {
+                        v1 = MyStringUtils.setFieldInConcatString(v1, "\\|", field, oldValue + "~" + value);
+                    }
+
                 }else {
                     int newValue = Integer.valueOf(oldValue) + Integer.valueOf(value);
                     v1=MyStringUtils.setFieldInConcatString(v1,"\\|",field,String.valueOf(newValue));
