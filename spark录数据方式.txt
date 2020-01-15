@@ -1,0 +1,4 @@
+使用sprak读取hdfs原始数据，再存入mysql
+使用textFile读取hdfs上原始数据，进行计算后生成新的数据newRDD
+使用foreachPartition遍历newRDD的每一个分区，
+使用jdbc生成preparedstatement，关闭自动提交，再遍历newRDD的每一个分区的每一行数据，取出每一个字段，填充进preparedstatement，最后使用batch的方式insert进mysql
